@@ -9,26 +9,20 @@ import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 @Injectable()
 export class ProductService {
   private productsUrl = 'api/products';
-  //private cartName = 'owlcart'; // TODO put in a config file?
 
   public cart: Product[] = [];
 
   private testcart = new BehaviorSubject<Product[]>(this.cart);
   cartitems$ = this.testcart.asObservable();
 
-  //JSON.parse(localStorage.getItem(this.cartName))
-
   constructor(private http: Http) { }
 
   addProductToCart(product: Product): void {
-    //localStorage.owlcart = JSON.stringify(this.cart);
-    //localStorage.setItem(this.cartName, JSON.stringify(this.cart));
     this.cart.push(product);
     this.testcart.next(this.cart);
   }
 
   clearCart(): void {
-    //localStorage.removeItem(this.cartName);
     this.cart = [];
     this.testcart.next(this.cart);
   }
@@ -55,7 +49,7 @@ export class ProductService {
   }
 
   private handleError(error: any): Promise<any> {
-    console.error('An error occurred', error); // for demo purposes only
+    console.error('An error occurred', error); // TODO actual error
     return Promise.reject(error.message || error);
   }
 

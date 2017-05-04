@@ -13,23 +13,18 @@ var http_1 = require('@angular/http');
 require('rxjs/add/operator/toPromise');
 var BehaviorSubject_1 = require('rxjs/BehaviorSubject');
 var ProductService = (function () {
-    //JSON.parse(localStorage.getItem(this.cartName))
     function ProductService(http) {
         this.http = http;
         this.productsUrl = 'api/products';
-        //private cartName = 'owlcart'; // TODO put in a config file?
         this.cart = [];
         this.testcart = new BehaviorSubject_1.BehaviorSubject(this.cart);
         this.cartitems$ = this.testcart.asObservable();
     }
     ProductService.prototype.addProductToCart = function (product) {
-        //localStorage.owlcart = JSON.stringify(this.cart);
-        //localStorage.setItem(this.cartName, JSON.stringify(this.cart));
         this.cart.push(product);
         this.testcart.next(this.cart);
     };
     ProductService.prototype.clearCart = function () {
-        //localStorage.removeItem(this.cartName);
         this.cart = [];
         this.testcart.next(this.cart);
     };
@@ -50,7 +45,7 @@ var ProductService = (function () {
             .catch(this.handleError);
     };
     ProductService.prototype.handleError = function (error) {
-        console.error('An error occurred', error); // for demo purposes only
+        console.error('An error occurred', error); // TODO actual error
         return Promise.reject(error.message || error);
     };
     ProductService = __decorate([
