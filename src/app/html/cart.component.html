@@ -1,0 +1,8 @@
+<ul>
+    <li *ngFor="let product of cart">
+        <span>{{ product.name }}</span>
+        <button class="remove" (click)="removeProductFromCart(product)">x</button>
+    </li>
+</ul>
+
+<button (click)="clearCart()">Clear Cart</button>

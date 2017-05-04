@@ -1,0 +1,13 @@
+<h2>Suggested products:</h2>
+<div class="grid grid-pad">
+  <a *ngFor="let product of products" class="col-1-4">
+  
+    <div class="module hero">
+      <div>{{ product.id }}</div>
+      <div>{{ product.name }}</div>
+      <div>{{ product.desc }}</div>
+      <div>{{ product.price }}</div>
+      <div>{{ product.suggest }}</div>
+    </div>
+  </a>
+</div>
